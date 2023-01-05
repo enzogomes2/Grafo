@@ -22,3 +22,4 @@ int eh_vertice(grafo gf, char *vert);
 lista letraC(grafo g, char *vert_origem, int K);
 void letraD(char* nome, grafo g, lista* l);
 void letraE(grafo g, char* origem, char* destino);
+void mostra_lista (grafo gf);
