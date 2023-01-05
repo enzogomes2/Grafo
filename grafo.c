@@ -250,33 +250,3 @@ recebe um nome e uma profundidade
 void letraB(grafo g, char* nome, int prf){
 
 }
-
-void BuscaEmProfundidade2 (grafo G, char* v, lista *l) {
-   struct vertice *nv;
-   struct arco *na;
-   lista visitados = cria_lista();
-   char vt[MAX_NOME];
-   lista caminho = cria_lista();
-   TipoPilha *pilha;
-   int i=0;
-   pilha = (TipoPilha *) malloc (sizeof(TipoPilha));
-   IniciaPilha(pilha);
-   Empilha(v,pilha);
-   while(!VaziaPilha(pilha)){
-       Desempilha(pilha, vt);
-       printf("\nDesempilhou: %s\n",vt);
-       if (JaInseridoLista(vt, visitados) == 0){
-          insere_elem(&visitados, vt);
-          for (nv = G->lista_vertices; nv!=NULL; nv = nv->prox) 
-              if(strcmp(vt, nv->valor_vert) == 0)
-                 for (na = nv->lista_adj; na != NULL; na = na->prox)
-                      if (JaInseridoLista(na->valor_vert, visitados)==0){
-                           Empilha(na->valor_vert,pilha);
-                           printf("\nEmpilhou: %s\n",na->valor_vert);
-                      }
-       }
-   }
-   remove_elem(&visitados, v);
-   *l = visitados;
-   free(pilha);
-}
